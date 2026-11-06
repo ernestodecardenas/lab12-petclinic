@@ -6,6 +6,9 @@ import com.tecsup.petclinic.dtos.OwnerDTO;
 
 import com.tecsup.petclinic.dtos.SpecialtyDTO;
 
+import com.tecsup.petclinic.dtos.PetCountByTypeDTO;
+import com.tecsup.petclinic.dtos.PetTypeDTO;
+
 import java.util.List;
 
 /**
@@ -100,5 +103,42 @@ public class TObjectCreator {
 				SpecialtyDTO.builder().id(1).name("radiology").office("Farewell").openHour(8).closeHour(18).build(),
 				SpecialtyDTO.builder().id(2).name("surgery").office("Maryland").openHour(8).closeHour(12).build(),
 				SpecialtyDTO.builder().id(3).name("dentistry").office("Terranova").openHour(9).closeHour(19).build());
+	}
+
+	// ===================== TYPE =====================
+
+	public static PetTypeDTO getPetTypeTO() {
+		return PetTypeDTO.builder().id(1).name("cat").description("Domestic feline").active(true)
+				.sizeCategory("small").averageLifespan(15).careLevel("medium").build();
+	}
+
+	public static PetTypeDTO newPetTypeTO() {
+		return PetTypeDTO.builder().name("ferret").description("Small mustelid").active(true)
+				.sizeCategory("small").averageLifespan(8).careLevel("high").build();
+	}
+
+	public static PetTypeDTO newPetTypeCreatedTO() {
+		PetTypeDTO type = newPetTypeTO();
+		type.setId(1000);
+		return type;
+	}
+
+	public static List<PetTypeDTO> getAllPetTypeTOs() {
+		String[] names = {"cat", "dog", "lizard", "bird", "hamster", "snake", "rabbit", "turtle"};
+		List<PetTypeDTO> types = new java.util.ArrayList<>();
+		for (int i = 0; i < names.length; i++)
+			types.add(PetTypeDTO.builder().id(i + 1).name(names[i]).active(!names[i].equals("snake")).build());
+		return types;
+	}
+
+	public static List<PetCountByTypeDTO> getPetCountByTypeTOs() {
+		return List.of(
+				new PetCountByTypeDTO(1, "cat", 4L),
+				new PetCountByTypeDTO(2, "dog", 4L),
+				new PetCountByTypeDTO(3, "lizard", 1L),
+				new PetCountByTypeDTO(4, "bird", 1L),
+				new PetCountByTypeDTO(5, "hamster", 2L),
+				new PetCountByTypeDTO(7, "rabbit", 0L),
+				new PetCountByTypeDTO(8, "turtle", 0L));
 	}
 }
