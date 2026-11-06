@@ -6,6 +6,9 @@ import com.tecsup.petclinic.dtos.OwnerDTO;
 
 import com.tecsup.petclinic.dtos.SpecialtyDTO;
 
+import com.tecsup.petclinic.dtos.VisitDTO;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -100,5 +103,33 @@ public class TObjectCreator {
 				SpecialtyDTO.builder().id(1).name("radiology").office("Farewell").openHour(8).closeHour(18).build(),
 				SpecialtyDTO.builder().id(2).name("surgery").office("Maryland").openHour(8).closeHour(12).build(),
 				SpecialtyDTO.builder().id(3).name("dentistry").office("Terranova").openHour(9).closeHour(19).build());
+	}
+
+	// ===================== VISIT =====================
+
+	public static VisitDTO getVisitTO() {
+		return VisitDTO.builder().id(1).petId(7).vetId(2).visitDate("2010-03-04")
+				.description("rabies shot").cost(new BigDecimal("45.00")).build();
+	}
+
+	public static VisitDTO newVisitTO() {
+		return VisitDTO.builder().petId(1).vetId(1).visitDate("2025-10-20")
+				.description("vaccination").cost(new BigDecimal("80.50")).build();
+	}
+
+	public static VisitDTO newVisitCreatedTO() {
+		VisitDTO visit = newVisitTO();
+		visit.setId(1000);
+		return visit;
+	}
+
+	public static List<VisitDTO> getAllVisitTOs() {
+		return List.of(
+				getVisitTO(),
+				VisitDTO.builder().id(2).petId(8).vetId(2).visitDate("2011-03-04").description("rabies shot").cost(new BigDecimal("45.00")).build(),
+				VisitDTO.builder().id(3).petId(8).vetId(3).visitDate("2009-06-04").description("neutered").cost(new BigDecimal("250.00")).build(),
+				VisitDTO.builder().id(4).petId(7).vetId(3).visitDate("2008-09-04").description("spayed").cost(new BigDecimal("275.00")).build(),
+				VisitDTO.builder().id(5).petId(1).vetId(1).visitDate("2024-01-15").description("general checkup").cost(new BigDecimal("65.00")).build(),
+				VisitDTO.builder().id(6).petId(3).vetId(4).visitDate("2024-02-20").description("dental cleaning").cost(new BigDecimal("150.00")).build());
 	}
 }
