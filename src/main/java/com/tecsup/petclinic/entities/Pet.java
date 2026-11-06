@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 /**
  *
@@ -40,11 +39,7 @@ public class Pet {
 	@Column(name = "birth_date")
 	private Date birthDate;
 
-
-	@OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@ToString.Exclude
-	//@EqualsAndHashCode.Exclude
-	private Set<Visit> visits;
+	// Las visitas se gestionan desde VisitController (/visits) usando visits.pet_id
 
 //	@ManyToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name = "type_id")
