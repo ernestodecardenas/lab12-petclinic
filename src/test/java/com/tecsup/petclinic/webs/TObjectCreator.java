@@ -5,6 +5,7 @@ import com.tecsup.petclinic.dtos.PetCountByTypeDTO;
 import com.tecsup.petclinic.dtos.PetTypeDTO;
 import com.tecsup.petclinic.dtos.SpecialtyDTO;
 import com.tecsup.petclinic.dtos.VetDTO;
+import com.tecsup.petclinic.dtos.VetSpecialtyDTO;
 import com.tecsup.petclinic.dtos.VisitDTO;
 
 import java.math.BigDecimal;
@@ -167,5 +168,19 @@ public class TObjectCreator {
 				new PetCountByTypeDTO(5, "hamster", 2L),
 				new PetCountByTypeDTO(7, "rabbit", 0L),
 				new PetCountByTypeDTO(8, "turtle", 0L));
+	}
+
+	// ===================== VET_SPECIALTY =====================
+
+	public static VetSpecialtyDTO newVetSpecialtyTO() {
+		// Vet 1 (James Carter) no tiene especialidades en los datos semilla
+		return VetSpecialtyDTO.builder().vetId(1).specialtyId(3).certificationDate("2021-07-01")
+				.yearsExperience(4).primary(false).notes("Dental surgery course").build();
+	}
+
+	public static List<VetSpecialtyDTO> getVet3SpecialtyTOs() {
+		return List.of(
+				VetSpecialtyDTO.builder().vetId(3).specialtyId(2).certificationDate("2012-03-20").yearsExperience(11).primary(true).build(),
+				VetSpecialtyDTO.builder().vetId(3).specialtyId(3).certificationDate("2018-11-10").yearsExperience(5).primary(false).build());
 	}
 }
