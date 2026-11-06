@@ -1,6 +1,8 @@
 package com.tecsup.petclinic.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,8 @@ import lombok.NoArgsConstructor;
  *
  */
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity(name = "specialties")
 @Data
 public class Specialty {
@@ -20,5 +24,14 @@ public class Specialty {
 
 	@Column(name = "name")
 	private String name;
+
+	@Column(name = "office")
+	private String office;
+
+	@Column(name = "h_open")
+	private Integer openHour;
+
+	@Column(name = "h_close")
+	private Integer closeHour;
 
 }
