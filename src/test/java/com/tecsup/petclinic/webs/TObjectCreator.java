@@ -4,6 +4,8 @@ import com.tecsup.petclinic.dtos.VetDTO;
 
 import com.tecsup.petclinic.dtos.OwnerDTO;
 
+import com.tecsup.petclinic.dtos.SpecialtyDTO;
+
 import java.util.List;
 
 /**
@@ -75,5 +77,28 @@ public class TObjectCreator {
 
 	public static List<OwnerDTO> getOwnersDavisTOs() {
 		return getAllOwnerTOs().stream().filter(o -> o.getLastName().equals("Davis")).toList();
+	}
+
+	// ===================== SPECIALTY =====================
+
+	public static SpecialtyDTO getSpecialtyTO() {
+		return SpecialtyDTO.builder().id(1).name("radiology").office("Farewell").openHour(8).closeHour(18).build();
+	}
+
+	public static SpecialtyDTO newSpecialtyTO() {
+		return SpecialtyDTO.builder().name("cardiology").office("Lima Norte").openHour(9).closeHour(17).build();
+	}
+
+	public static SpecialtyDTO newSpecialtyCreatedTO() {
+		SpecialtyDTO specialty = newSpecialtyTO();
+		specialty.setId(1000);
+		return specialty;
+	}
+
+	public static List<SpecialtyDTO> getAllSpecialtyTOs() {
+		return List.of(
+				SpecialtyDTO.builder().id(1).name("radiology").office("Farewell").openHour(8).closeHour(18).build(),
+				SpecialtyDTO.builder().id(2).name("surgery").office("Maryland").openHour(8).closeHour(12).build(),
+				SpecialtyDTO.builder().id(3).name("dentistry").office("Terranova").openHour(9).closeHour(19).build());
 	}
 }
