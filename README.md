@@ -30,7 +30,7 @@ Cada entidad tiene dos clases de prueba en `src/test/java/com/tecsup/petclinic/w
 | 5. Type | `feature/type` | `/types`, `?active=`, `/types/report/pet-count` (excluye tipos inactivos) | 9 | 10 |
 | 6. VetSpecialty | `feature/vet-specialty` | `/vet-specialties`, `/vets/{id}/specialties`, `/specialties/{id}/vets?minExperience=`, `.../primary`, `.../experience`, `.../certification` (duplicado → 409) | 14 | 12 |
 
-Total: **150 pruebas** (25 originales de Pet + 125 nuevas), todas en verde.
+Total: **156 pruebas** (27 originales del proyecto + 129 nuevas), todas en verde.
 
 ### Flujo Git
 
