@@ -2,6 +2,8 @@ package com.tecsup.petclinic.webs;
 
 import com.tecsup.petclinic.dtos.VetDTO;
 
+import com.tecsup.petclinic.dtos.OwnerDTO;
+
 import java.util.List;
 
 /**
@@ -43,5 +45,35 @@ public class TObjectCreator {
 
 	public static List<VetDTO> getInactiveVetTOs() {
 		return getAllVetTOs().stream().filter(v -> !v.getActive()).toList();
+	}
+
+	// ===================== OWNER =====================
+
+	public static OwnerDTO getOwnerTO() {
+		return OwnerDTO.builder().id(1).firstName("George").lastName("Franklin")
+				.address("110 W. Liberty St.").city("Madison").telephone("6085551023").build();
+	}
+
+	public static OwnerDTO newOwnerTO() {
+		return OwnerDTO.builder().firstName("Ana").lastName("Torres")
+				.address("Av. Cascanueces 2221").city("Lima").telephone("987654321").build();
+	}
+
+	public static OwnerDTO newOwnerCreatedTO() {
+		OwnerDTO owner = newOwnerTO();
+		owner.setId(1000);
+		return owner;
+	}
+
+	public static List<OwnerDTO> getAllOwnerTOs() {
+		return List.of(
+				OwnerDTO.builder().id(1).firstName("George").lastName("Franklin").build(),
+				OwnerDTO.builder().id(2).firstName("Betty").lastName("Davis").build(),
+				OwnerDTO.builder().id(3).firstName("Eduardo").lastName("Rodriquez").build(),
+				OwnerDTO.builder().id(4).firstName("Harold").lastName("Davis").build());
+	}
+
+	public static List<OwnerDTO> getOwnersDavisTOs() {
+		return getAllOwnerTOs().stream().filter(o -> o.getLastName().equals("Davis")).toList();
 	}
 }
