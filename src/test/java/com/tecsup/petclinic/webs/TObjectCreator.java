@@ -1,11 +1,10 @@
 package com.tecsup.petclinic.webs;
 
-import com.tecsup.petclinic.dtos.VetDTO;
-
 import com.tecsup.petclinic.dtos.OwnerDTO;
-
+import com.tecsup.petclinic.dtos.PetCountByTypeDTO;
+import com.tecsup.petclinic.dtos.PetTypeDTO;
 import com.tecsup.petclinic.dtos.SpecialtyDTO;
-
+import com.tecsup.petclinic.dtos.VetDTO;
 import com.tecsup.petclinic.dtos.VisitDTO;
 
 import java.math.BigDecimal;
@@ -131,5 +130,42 @@ public class TObjectCreator {
 				VisitDTO.builder().id(4).petId(7).vetId(3).visitDate("2008-09-04").description("spayed").cost(new BigDecimal("275.00")).build(),
 				VisitDTO.builder().id(5).petId(1).vetId(1).visitDate("2024-01-15").description("general checkup").cost(new BigDecimal("65.00")).build(),
 				VisitDTO.builder().id(6).petId(3).vetId(4).visitDate("2024-02-20").description("dental cleaning").cost(new BigDecimal("150.00")).build());
+	}
+
+	// ===================== TYPE =====================
+
+	public static PetTypeDTO getPetTypeTO() {
+		return PetTypeDTO.builder().id(1).name("cat").description("Domestic feline").active(true)
+				.sizeCategory("small").averageLifespan(15).careLevel("medium").build();
+	}
+
+	public static PetTypeDTO newPetTypeTO() {
+		return PetTypeDTO.builder().name("ferret").description("Small mustelid").active(true)
+				.sizeCategory("small").averageLifespan(8).careLevel("high").build();
+	}
+
+	public static PetTypeDTO newPetTypeCreatedTO() {
+		PetTypeDTO type = newPetTypeTO();
+		type.setId(1000);
+		return type;
+	}
+
+	public static List<PetTypeDTO> getAllPetTypeTOs() {
+		String[] names = {"cat", "dog", "lizard", "bird", "hamster", "snake", "rabbit", "turtle"};
+		List<PetTypeDTO> types = new java.util.ArrayList<>();
+		for (int i = 0; i < names.length; i++)
+			types.add(PetTypeDTO.builder().id(i + 1).name(names[i]).active(!names[i].equals("snake")).build());
+		return types;
+	}
+
+	public static List<PetCountByTypeDTO> getPetCountByTypeTOs() {
+		return List.of(
+				new PetCountByTypeDTO(1, "cat", 4L),
+				new PetCountByTypeDTO(2, "dog", 4L),
+				new PetCountByTypeDTO(3, "lizard", 1L),
+				new PetCountByTypeDTO(4, "bird", 1L),
+				new PetCountByTypeDTO(5, "hamster", 2L),
+				new PetCountByTypeDTO(7, "rabbit", 0L),
+				new PetCountByTypeDTO(8, "turtle", 0L));
 	}
 }
